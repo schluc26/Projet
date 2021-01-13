@@ -19,7 +19,20 @@ def update():
 
 def on_mouse_down(pos):
     if alien.collidepoint(pos):
-        #sounds.eep.play()
+        sounds.eep.play()
         alien.image = 'alien_hurt'
 
 
+def on_mouse_down(pos):
+    if alien.collidepoint(pos):
+        set_alien_hurt()
+
+
+def set_alien_hurt():
+    alien.image = 'alien_hurt'
+    sounds.eep.play()
+    clock.schedule_unique(set_alien_normal, 1.0)
+
+
+def set_alien_normal():
+    alien.image = 'alien'
